@@ -1,6 +1,6 @@
 {
-  "name": "react-dnd-parent",
-  "private": true,
+  "name": "react-dnd-next",
+  "version": "1.0.0",
   "description": "React-DnD Monorepo",
   "repository": {
     "type": "git",
