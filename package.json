@@ -1,204 +1,36 @@
 {
-  "name": "react-dnd-next",
-  "version": "1.0.0",
-  "description": "React-DnD Monorepo",
+  "name": "react-dnd",
+  "version": "10.0.2",
+  "description": "Drag and Drop for React",
+  "main": "./dist/cjs/index.js",
+  "module": "./dist/esm/index.js",
+  "types": "lib/index.d.ts",
+  "sideEffects": false,
   "repository": {
     "type": "git",
     "url": "https://github.com/react-dnd/react-dnd.git"
   },
-  "keywords": [
-    "react",
-    "reactjs",
-    "file",
-    "drag",
-    "drop",
-    "html5",
-    "draggable",
-    "droppable",
-    "drag-and-drop",
-    "dnd",
-    "javascript",
-    "react-component",
-    "hoc"
-  ],
-  "engines": {
-    "node": ">= 10.0"
-  },
-  "author": "Dan Abramov <dan.abramov@me.com> (http://github.com/gaearon)",
-  "contributors": [
-    "Chris Trevino <darthtrevino@gmail.com> (http://github.com/darthtrevino)",
-    "Jordan Gensler (http://github.com/kesne)",
-    "Gagan (https://github.com/thetechie)"
-  ],
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/react-dnd/react-dnd/issues"
-  },
-  "homepage": "https://github.com/react-dnd/react-dnd",
   "scripts": {
-    "clean": "lerna run clean",
-    "build": "lerna run build --stream",
-    "unit_test": "jest",
-    "jest:watch": "jest --watch",
-    "jest:cov": "jest --coverage",
-    "lint:code": "eslint . --ext .js,.ts,.jsx,.tsx",
-    "lint:spelling": "mdspell 'packages/documentation/docsite/markdown/**/*.md' --en-us --report",
-    "lint:tone": "alex .",
-    "lint": "run-s lint:*",
-    "changelog": "conventional-changelog -p eslint -i CHANGELOG.md -s -r 0",
-    "release_canary": "lerna publish -c --preid next --yes",
-    "release": "run-s clean test go_no_go release:packages changelog",
-    "release:packages": "lerna publish",
-    "test_modules": "CI=true lerna run test --stream",
-    "go_no_go": "node scripts/go_no_go.js",
-    "verify_source": "run-p lint build",
-    "run_tests": "run-p test_modules jest:cov",
-    "test": "run-s clean verify_source run_tests",
-    "ci": "run-s verify_source run_tests",
-    "prettify:source": "prettier 'packages/*/*/src/**/*.ts*'",
-    "prettify": "prettier 'packages/*/**/*.js' 'examples/**/*.js' 'site/**/*.js'",
-    "precommit:lint": "lint-staged",
-    "precommit:format": "pretty-quick --staged",
-    "start": "lerna run --parallel --stream start",
-    "start_docs": "lerna run --stream start --scope react-dnd-documentation",
-    "watch": "lerna run --parallel --stream watch"
+    "clean": "../../../scripts/clean_package.sh",
+    "build": "../../../scripts/build_package.sh",
+    "start": "../../../scripts/watch_package.sh"
   },
-  "husky": {
-    "hooks": {
-      "pre-commit": "run-s precommit:lint precommit:format",
-      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
-    }
+  "dependencies": {
+    "@react-dnd/shallowequal": "^2.0.0",
+    "@types/hoist-non-react-statics": "^3.3.1",
+    "dnd-core": "^10.0.2",
+    "hoist-non-react-statics": "^3.3.0"
   },
   "devDependencies": {
-    "@babel/cli": "^7.7.5",
-    "@babel/core": "^7.7.5",
-    "@babel/plugin-proposal-class-properties": "^7.7.4",
-    "@babel/plugin-proposal-object-rest-spread": "^7.7.4",
-    "@babel/preset-env": "^7.7.5",
-    "@commitlint/cli": "^8.2.0",
-    "@commitlint/config-conventional": "^8.2.0",
-    "@rollup/plugin-replace": "^2.3.0",
-    "@types/jest": "^25.1.0",
-    "@types/enzyme": "^3.10.4",
-    "@typescript-eslint/eslint-plugin": "^2.8.0",
-    "@typescript-eslint/parser": "^2.8.0",
-    "alex": "^8.0.1",
-    "conventional-changelog-cli": "^2.0.27",
-    "enzyme": "^3.10.0",
-    "enzyme-adapter-react-16": "^1.15.1",
-    "eslint": "^6.7.0",
-    "eslint-config-prettier": "^6.7.0",
-    "eslint-config-react-app": "^5.0.2",
-    "eslint-plugin-no-for-of-loops": "^1.0.1",
-    "eslint-plugin-prettier": "^3.1.1",
-    "eslint-plugin-react": "^7.16.0",
-    "eslint-plugin-react-hooks": "^2.3.0",
-    "husky": "^4.x",
-    "inquirer": "^7.0.0",
-    "jest": "^25.1.0",
-    "jest-environment-jsdom": "^25.1.0",
-    "lerna": "^3.19.0",
-    "lint-staged": "^10.0.0",
-    "markdown-spellcheck": "^1.3.1",
-    "npm-run-all": "^4.1.5",
-    "prettier": "^2.0.1",
-    "pretty-quick": "^2.0.1",
+    "@types/react": "^16.9.13",
+    "@types/react-dom": "^16.9.4",
     "react": "^16.12.0",
-    "react-dom": "^16.12.0",
-    "replace-in-file": "^5.0.2",
-    "rollup": "^1.27.4",
-    "rollup-plugin-commonjs": "^10.1.0",
-    "rollup-plugin-node-resolve": "^5.2.0",
-    "rollup-plugin-terser": "^5.1.2",
-    "ts-jest": "^25.0.0",
-    "typescript": "^3.7.2"
+    "react-dom": "^16.12.0"
   },
-  "jest": {
-    "clearMocks": true,
-    "cacheDirectory": ".jest-cache",
-    "setupFilesAfterEnv": [
-      "<rootDir>/jest/setup-enzyme.js"
-    ],
-    "moduleFileExtensions": [
-      "ts",
-      "tsx",
-      "js",
-      "jsx"
-    ],
-    "modulePaths": [
-      "<rootDir>/packages/core/",
-      "<rootDir>/packages/testing/"
-    ],
-    "moduleNameMapper": {
-      "^dnd-core$": "dnd-core/dist/cjs",
-      "^react-dnd$": "react-dnd/dist/cjs",
-      "^react-dnd-html5-backend$": "html5-backend/dist/cjs",
-      "^react-dnd-touch-backend$": "touch-backend/dist/cjs",
-      "^react-dnd-test-backend$": "react-dnd-test-backend/dist/cjs",
-      "^react-dnd-test-utils$": "react-dnd-test-utils/dist/cjs"
-    },
-    "collectCoverageFrom": [
-      "packages/core/**/*.{ts,tsx}",
-      "!**/node_modules/**",
-      "!**/lib/**",
-      "!**/__tests__/**"
-    ],
-    "testMatch": [
-      "<rootDir>/__tests__/**/?(*.)(spec|test).ts(x|)",
-      "<rootDir>/packages/core/dnd-core/src/**/__tests__/**/?(*.)(spec|test).ts(x|)",
-      "<rootDir>/packages/core/react-dnd/src/**/__tests__/**/?(*.)(spec|test).ts(x|)",
-      "<rootDir>/packages/core/html5-backend/src/**/__tests__/**/?(*.)(spec|test).ts(x|)",
-      "<rootDir>/packages/core/touch-backend/src/**/__tests__/**/?(*.)(spec|test).ts(x|)"
-    ],
-    "transform": {
-      "^.+\\.(ts|tsx)$": "ts-jest"
-    },
-    "globals": {
-      "ts-jest": {
-        "tsConfig": "tsconfig.jest.json",
-        "diagnostics": {
-          "pathRegex": "/.(spec|test).ts$/"
-        }
-      }
-    }
+  "peerDependencies": {
+    "react": ">= 16.8",
+    "react-dom": ">= 16.8"
   },
-  "lint-staged": {
-    "*.{ts,tsx}": [
-      "eslint --fix",
-      "prettier"
-    ]
-  },
-  "prettier": {
-    "semi": false,
-    "singleQuote": true,
-    "trailingComma": "all",
-    "useTabs": true,
-    "overrides": [
-      {
-        "files": "*.md",
-        "options": {
-          "useTabs": false
-        }
-      },
-      {
-        "files": "*.json",
-        "options": {
-          "useTabs": false,
-          "tabWidth": 2
-        }
-      }
-    ]
-  },
-  "workspaces": {
-    "packages": [
-      "packages/alternative_builds/umd",
-      "packages/alternative_builds/cjs/*",
-      "packages/documentation/*",
-      "packages/testing/*",
-      "packages/core/*"
-    ],
-    "nohoist": [
-      "react-dnd-documentation/**"
-    ]
-  }
+  "gitHead": "5d16ab043eb83d49c5b6964ce276d0a6c15210d5"
 }
